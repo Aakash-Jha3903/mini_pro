@@ -1,4 +1,4 @@
-# my_mini_project/mini_app2/models.py
+# mini_app2/models.py
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.contrib.auth.validators import ASCIIUsernameValidator

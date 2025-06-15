@@ -1,10 +1,8 @@
 # admin.py
 from django.contrib import admin
-# from .models import Officials, OfficialsUser  # Updated import statement
 from .models import  OfficialsUser  
 from django.contrib.auth.admin import UserAdmin
-
-from .models import  Student, SectionTeacher,TeacherRegistration # Updated import statement
+from .models import  Student, SectionTeacher,TeacherRegistration
 
 @admin.register(OfficialsUser)
 class OfficialsUserAdmin(admin.ModelAdmin):
@@ -18,8 +16,6 @@ class StudentAdmin(admin.ModelAdmin):
     list_display = ['student_id', 'student_name','section']
     search_fields = ['student_id', 'student_name','section']
     ordering = ['student_id']  
-
-
 
 @admin.register(SectionTeacher)
 class SectionTeacherAdmin(admin.ModelAdmin):

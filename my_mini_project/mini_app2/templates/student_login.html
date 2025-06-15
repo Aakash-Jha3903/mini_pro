@@ -63,11 +63,6 @@
         {% csrf_token %}
         <h2 style="color: #333;">Welcome back, Student!</h2>
         {{ form.as_p }}
-        
-        {% comment %} <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required> {% endcomment %}
         <button type="submit">Login</button>
     </form>
 </body>

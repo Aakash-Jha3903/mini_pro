@@ -23,7 +23,6 @@ from mini_app2 import views
 # from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     # path('officials/', views.officials, name='officials'),
     path('officials/', views.Officials, name='officials'),

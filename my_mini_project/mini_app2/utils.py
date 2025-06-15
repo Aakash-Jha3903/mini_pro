@@ -9,13 +9,10 @@ def get_csv_path(section, date):
     csv_dir = os.path.join('attendance_csv', section)
     os.makedirs(csv_dir, exist_ok=True)
     csv_file = f"{section}_attendance.csv"  # Simplified file name for daily att.
-    # csv_file = f"{date.strftime('%Y%m%d')}.csv"
     return os.path.join(csv_dir, csv_file)
 
 def update_attendance_csv(csv_file_path, students_data, is_present_list):
     now = datetime.datetime.now()
-    # today = datetime.date.today()
-    # now = today + datetime.timedelta(days=1)
 
     file_exists = os.path.exists(csv_file_path)
 
@@ -36,11 +33,6 @@ def update_attendance_csv(csv_file_path, students_data, is_present_list):
                 data[0] = headers
                 for i, student_row in enumerate(data[1:]):
                     student_row.append(new_attendance[i])
-
-                # for i, student in enumerate(students_data):
-                #     student_id = student.student_id
-                #     is_present = is_present_list.get(f'student_{student_id}', 'A')
-                #     data[i + 1].append(is_present)
 
             else:
                 # If the last date is different, add a new column for today's date

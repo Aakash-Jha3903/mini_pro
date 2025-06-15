@@ -46,7 +46,6 @@
         <div class="excel">
             <form method="post" action="{% url 'export_excel' %}">
                 {% csrf_token %}
-                <!-- <input type="hidden" name="excel_download" required /> -->
                 <button type="submit" name="excel_download">Download Excel File</button>
             </form> <br>
         </div>
@@ -82,7 +81,6 @@
                 <th>Student Aadhar</th>
                 <th>Student Phone</th>
                 <th>Student Email</th>
-                {% comment %} <th>Age</th> {% endcomment %}
                 <th>Gender</th>
                 <th>DOB</th>
                 <th>Address</th>
@@ -110,7 +108,6 @@
                 <td>{{ student.student_aadhar }}</td>
                 <td>{{ student.student_phone }}</td>
                 <td>{{ student.student_email }}</td>
-                {% comment %} <td>{{ student.age }}</td> {% endcomment %}
                 <td>{{ student.gender }}</td>
                 <td>{{ student.student_dob }}</td>
                 <td>{{ student.student_address }}</td>

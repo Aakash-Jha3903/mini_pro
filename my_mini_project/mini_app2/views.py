@@ -375,10 +375,6 @@ def teacher_login(request):
 
 
 
-
-
-
-
 # mini_app2/views.py
 import os
 import csv
@@ -409,41 +405,6 @@ def teacher_dashboard(request, section):
     return render(request, 'teacher_dashboard.html', {'students_data': students_data, 'section': section, 'current_date': now})
 
 
-
-
-# # views.py
-# from django.shortcuts import render, HttpResponse
-# from .utils import get_csv_path, update_attendance_csv, plot_attendance_graph
-
-# def teacher_dashboard(request, section):
-#     now = datetime.datetime.now()
-#     students_data = Student.objects.filter(section=section)
-#     csv_file_path = get_csv_path(section, now)
-
-#     if request.method == 'POST':
-#         is_present_list = {}
-#         for student in students_data:
-#             key = f'student_{student.id}'
-#             value = request.POST.get(key, 'A')
-#             is_present_list[key] = value
-
-#         update_attendance_csv(csv_filfor student in students_data:
-        # csv_writer.writerow([student.student_id, student.student_name])e_path, students_data, is_present_list)
-
-#         # Read the updated data for visualization
-#         with open(csv_file_path, 'r', newline='') as csvfile:
-#             csv_reader = csv.reader(csvfile)
-#             data = list(csv_reader)
-
-#         # Plot the attendance graph and get the path to the saved image
-#         image_path = plot_attendance_graph(data, section)
-
-#         return render(request, 'attendance_success.html', {'image_path': image_path})
-
-#     return render(request, 'teacher_dashboard.html', {'students_data': students_data, 'section': section, 'current_date': now})
-
-
-
 @login_required(login_url='/officials/')
 def data_analysis(request):     # function name must be data_analysis ************
     students_data = Student.objects.all()
@@ -453,85 +414,6 @@ from django.http import HttpResponse
 import csv
 from django.contrib import messages
 
-# def export_excel(request):
-#     students_data = Student.objects.all()
-#     # Create a response object with appropriate headers for an Excel file
-#     response = HttpResponse(content_type='text/csv')
-#     response['Content-Disposition'] = 'attachment; filename=student_data.csv'
-
-#     csv_writer = csv.writer(response)
-#     # headers = ['Student ID', 'Student Name']
-#     # csv_writer.writerow(headers)
-
-#     # # Write the student data
-#     # 
-
-#     # Define the headers
-#     headers = [
-#         'Student ID', 'Student Name', 'Student Aadhar', 'Student Phone', 'Student Email',
-#         'Gender', 'Date of Birth', 'Address', 'Father Name', 'Father Phone', 
-#         'Mother Name', 'Mother Phone', 'School Name', 'Section', 'State', 'City',
-#         'Attendance', 'Marks', 'Fees', 'Created At', 'Updated At'
-#     ]
-#     csv_writer.writerow(headers)
-
-#     # Write the student data
-#     for student in students_data:
-#         csv_writer.writerow([
-#             student.student_id,
-#             student.student_name,
-#             student.student_aadhar,
-#             student.student_phone,
-#             student.student_email,
-#             student.gender,
-#             student.student_dob,
-#             student.student_address,
-#             student.father_name,
-#             student.father_phone,
-#             student.mother_name,
-#             student.mother_phone,
-#             student.school_name,
-#             student.section,
-#             student.state_name,
-#             student.city_name,
-#             student.attendance,
-#             student.marks,
-#             student.fees,
-#             student.created_at,
-#             student.updated_at,
-#         ])
-
-#     excel_download = request.POST.get("excel_download")
-#     if 'excel_download' in request.POST: 
-#         try:
-#                 return response
-#         except Exception as e :
-#             # return render(request, 'data_analysis.html',{"excel_down":f"Unable to download the excel file , An error occurred: {str(e)}"})
-#             messages.error(request, f"Unable to download the excel file. An error occurred: {str(e)}")
-
-#     user_email = request.POST.get('user_email')
-#     if user_email:
-#         try:
-#             # Email the file to the user
-#             subject = 'Student Management System'
-#             message = 'Student Data excel Sheet attached .'
-#             from_email = 'ajdjango3@gmail.com'  
-#             to_email = [user_email]  
-
-#             email = EmailMessage(subject, message, from_email, to_email)
-#             email.attach('student_data.csv', response.content, 'text/csv')
-#             email.send()
-#             # del request.session['user_email']
-#             # return render(request, 'data_analysis.html', {'students': students_data, 'email_sent': f"Student Data excel Sheet sent to your email. {user_email}"})
-#             messages.success(request, f"Student Data excel Sheet sent to your email: {user_email}")
-       
-#         except Exception as e:
-#             messages.error(request, f"Email not sent. An error occurred: {str(e)}")
-
-#             # return render(request, 'data_analysis.html',{"email_not_sent":f"email not send , An error occurred: {str(e)}"})
-#             # return HttpResponse(f"email not send , An error occurred: {str(e)}")
-#     return render(request, 'data_analysis.html', {'students': students_data})
-#     # return render(request, 'data_analysis.html')
 import pandas as pd
 from django.http import HttpResponse
 from django.core.mail import EmailMessage
@@ -589,7 +471,7 @@ def export_excel(request):
         try:
             subject = 'Student Management System'
             message = 'Student Data Excel Sheet attached.'
-            from_email = 'ajdjango3@gmail.com'
+            from_email = settings.EMAIL_HOST_USER  
             to_email = [user_email]
 
             email = EmailMessage(subject, message, from_email, to_email)
@@ -928,9 +810,6 @@ def data_visualization(request):
                     [user_email],
                 )
 
-                # Attach the rendered HTML to the email
-                # email.attach('data_analysis.html', visualization_html_data, 'text/html')
-
                 # Attach the plot image to the email
                 email.attach_file(plot_path)
 
@@ -1136,7 +1015,7 @@ def email_download_csv(request):
 
             subject = 'Student Management System'
             message = 'Student Data excel Sheet attached .'
-            from_email = 'ajdjango3@gmail.com'  
+            from_email = settings.EMAIL_HOST_USER 
             to_email = [user_email]  
             # to_email = [request.POST.get('user_email')
             email = EmailMessage(subject, message, from_email, to_email)
@@ -1144,13 +1023,11 @@ def email_download_csv(request):
             email.send()    # del request.session['user_email'
 
             
-            # if 'user_email' in request.POST:
-            #     del request.session['user_email']
+
             messages.success(request, f"Student Data excel Sheet sent to your email: {user_email}")
             
         except Exception as e:
             messages.error(request, f"Email not sent. An error occurred: {str(e)}")
-        # del request.POST['user_email']
             
     return render(request, 'search.html', {'results': results})  # Render the search results if download fails
     
@@ -1177,16 +1054,12 @@ def update_student(request, student_id):
     student = get_object_or_404(Student, id=student_id)
 
     if request.method == 'POST':
-        # Update the student details based on the form submission
-
-        student.student_id = request.POST.get('student_id')     #********************
+        student.student_id = request.POST.get('student_id')     
         student.student_name = request.POST.get('student_name')
         student.student_aadhar = request.POST.get('student_aadhar')
         student.student_phone = request.POST.get('student_phone')
         student.student_email = request.POST.get('student_email')
 
-        # student.age = request.POST.get('age')
-        
         student.gender = request.POST.get('gender')
         student.student_dob = request.POST.get('student_dob')
         student.student_address = request.POST.get('student_address')

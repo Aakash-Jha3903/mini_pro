@@ -58,7 +58,6 @@
         <option value="Paid">Paid</option>
         <option value="Unpaid">Unpaid</option>
       </select>
-      {% comment %} <button typae="submit">Search</button> {% endcomment %}
       <button name="search" type="submit">Search</button>
     </form>
     <div class="share_data">
@@ -131,13 +130,6 @@
       {% comment %} <button id="delete-all-form" type="submit" name="delete_action" value="delete_all" onclick="startDeleteTimer()" style="background:red">Delete All</button> {% endcomment %}
     </form>
 
-    {% comment %} 
-      <div id="delete-timer-container" style="display: none;">
-        <p id="delete-timer"></p>
-        <p>seconds remaining. You can cancel the deletion.</p>
-        <button id="cancel-delete-btn" onclick="cancelDeletion()">Cancel Deletion</button>
-      </div> 
-    {% endcomment %}
 
     <div>
       {% if results %}
