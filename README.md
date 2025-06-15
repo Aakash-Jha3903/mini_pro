@@ -31,7 +31,6 @@ This system offers:
     
 ## 🛠️ Tech Stack
 Frontend ⇄ Django Views ⇄ Models ⇄ Database
-_____________________________________________________________
 | Component           |              Technology             |
 |---------------------|-------------------------------------|
 | Backend             | Python Django                       |
@@ -39,8 +38,7 @@ _____________________________________________________________
 | Data Analysis       | Pandas, Matplotlib                  |
 | Email & OTP         | SMTP, Django Email Backend          |
 | Database            | MySQL                               |
-|-----------------------------------------------------------|
----
+
 
 ## 🔁 Core Modules & Workflow
 
