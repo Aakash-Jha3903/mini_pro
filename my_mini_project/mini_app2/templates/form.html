@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/form.css">
+    <title>Student Details</title>
+    <style>
+        body{
+            background: linear-gradient(0.1deg, #3498db, #8e44ad);
+            background: linear-gradient(to right, #3498db, #2ecc71);
+
+        }
+        h1{
+            background: linear-gradient(45deg,deeppink, #3498db, #8e44ad);
+            background: linear-gradient(to right, #3498db, #2ecc71);
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Student Details</h1>
+        {% comment %} <form action="{% url 'thanks' %}" method="POST"> {% endcomment %}
+            <form action="{% url 'form' %}" method="POST">         
+                {% csrf_token %}
+                
+            <div class="msg" >
+                 {{message}} 
+            </div>
+            <br>
+            <div class="input-container">
+                <label for="student_id">Student id: <span>*</span></label>
+                <input type="text" id="student_id" name="student_id" required>
+            </div>
+            <div>
+                <label for="student_name">Student Name: <span>*</span></label>
+                <input type="text" id="student_name" name="student_name" required>
+            </div>
+            <div class="input-container">
+                <label for="student_aadhar">Student Aadhar Number: <span>*</span> </label>
+                <input type="text" id="student_aadhar" name="student_aadhar" required>
+            </div>
+            <div class="input-container">
+                <label for="student_phone">Student Phone Number: <span>*</span> </label>
+                <input type="text" id="student_phone" name="student_phone" required>
+            </div>
+            <div class="input-container">
+                <label for="student_email">Student email:</label>
+                <input type="email" id="student_email" name="student_email" required>
+            </div>
+
+            {% comment %} <div class="input-container">
+                <label for="age">Student's Age: <span>*</span> </label>
+                <input type="text" id="age" name="age" required>
+            </div> {% endcomment %}
+            
+            <div class="input-container">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="input-container">
+                <label for="student_dob">Date of Birth:</label>
+                <input type="date" id="student_dob" name="student_dob" required>
+            </div>
+            <div class="input-container">
+                <label for="student_address">Student's Address:</label>
+                <input type="text" id="student_address" name="student_address" required>
+            </div>
+
+            <div class="input-container">
+                <label for="father_name">Father's Name: <span>*</span> </label>
+                <input type="text" id="father_name" name="father_name" required>
+            </div>
+            <div class="input-container">
+                <label for="father_phone">Father Phone Number: <span>*</span> </label>
+                <input type="text" id="father_phone" name="father_phone" required>
+            </div>
+            <div class="input-container">
+                <label for="mother_name">Mother's Name: <span>*</span> </label>
+                <input type="text" id="mother_name" name="mother_name" required>
+            </div>
+            <div class="input-container">
+                <label for="mother_phone">Mother Phone Number: <span>*</span> </label>
+                <input type="text" id="mother_phone" name="mother_phone" required>
+            </div>
+
+
+            <div class="input-container">
+                <label for="school_name">School Name: <span>*</span> </label>
+                <input type="text" id="school_name" name="school_name" required>
+            </div>
+            <div class="input-container">
+                <label for="section">Student's section: <span>*</span> </label>
+                <input type="text" id="section" name="section" required>
+            </div>
+
+            <div class="input-container">
+                <label for="attendance">Attendance:</label>
+                <input type="number" id="attendance" name="attendance" min="0" max="100" required>
+            </div>
+            <div class="input-container">
+                <label for="marks">Marks:</label>
+                <input type="number" id="marks" name="marks" min="0" max="100" required>
+            </div>
+            <div class="input-container">
+                <label for="fees">Fees Status:</label>
+                <select id="fees" name="fees" required>
+                    <option value="Paid">Paid</option>
+                    <option value="Unpaid">Unpaid</option>
+                </select>
+            </div>
+            <div class="input-container">
+                <label for="state_name">State Name: <span>*</span> </label>
+                <input type="text" id="state_name" name="state_name" required>
+            </div>
+            <div class="input-container">
+                <label for="city_name">City Name:</label>
+                <input type="text" id="city_name" name="city_name" required>
+            </div>
+
+
+            <!-- <div class="input-container">
+                <label for="captcha">Captcha (Tick the mark):</label>
+                <input type="checkbox" id="captcha" name="captcha" required>
+            </div> -->
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <!-- <script>
+        function redirectToLink() {
+            window.location.href = "thanks";
+            return false;
+        }
+    </script> -->
+</body>
+
+</html>

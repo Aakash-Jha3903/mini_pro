@@ -1,0 +1,284 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Management System</title>
+    <!-- CSS linking file -->
+    {% comment %} <link rel="stylesheet" href="\static\index.css" /> {% endcomment %}
+    <link rel="stylesheet" href="{% static 'index.css' %}" />
+    {% comment %} <link rel="stylesheet" href="/static/index.css" /> {% endcomment %}
+    {% comment %} <link rel="stylesheet" href="staticfiles_build/static/index.css" /> {% endcomment %}
+    {% comment %} <link rel="stylesheet" href="C:\Users\Aakash Jha\mini_pro\my_mini_project\staticfiles_build\static\index.css" /> {% endcomment %}
+    <!-- Font connect link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <!-- Icon links -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+  <body>
+    <div class="overall">
+      <div class="nav1 flex">
+        <div class="first_child">
+          <div class="iner_perents flex">
+            <div class="iner_first_child">
+              <div class="hero-text">
+                <h1><span class="input"></span></h1>
+              </div>
+              <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+            </div>
+          </div>
+        </div>
+        <div class="second_child">
+          <div class="social_perents flex">
+            <div class="social_firstchild">
+              <p>
+                <span><i class="ri-phone-fill"></i></span><span>HELPLINE</span>+91-18003456722
+              </p>
+            </div>
+            <div class="social_secondchild">
+                <ul class="list flex">
+                            <li class="flex"><a href="#"><i class="ri-facebook-line"></i></a></li>
+                            <li class="flex"><a href="#"><i class="ri-twitter-line"></i></a></li>
+                            <li class="flex"><a href="#"><i class="ri-linkedin-line"></i></a></li>
+                            <li class="flex"><a href="#"><i class="ri-instagram-line"></i></a></li>
+                        </ul>  
+              <!-- <span>Child Helpline</span>: 1098 -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- </div> -->
+
+      <!-- nav2 html start -->
+      <header>
+        <div class="main_nav">
+          <div class="logo">
+            <img src="/static/img/logo.png" alt="make in bharat logo" />
+          </div>
+          <ul class="list">
+            <li>
+              <a href="">Home</a>
+            </li>   
+            <li>
+              <a href="#about">About</a>
+            </li>
+            <li>
+              <a href="{% url 'officials' %}">Service</a>
+            </li>
+            <li>
+              <a href="{% url 'contact' %}">Developers</a>
+            </li>
+          </ul>
+          <div class="intro_button">
+            <a class="intro_btn" href="{% url 'ST_login' %}">Student Teacher Login</a> <br>
+            <a class="intro_btn" href="{% url 'form' %}">Student Registration</a> <br>
+          </div>
+        </div>
+      </header>
+
+      <!-- intro section html -->
+      {% comment %} <div class="intro_section" style="background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url('{% static "img/intro.jpeg" %}'); {% endcomment %}
+      <div class="intro_section" style="background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url('{% static "img/intro.jpeg" %}');">
+        <div class="intro_main flex">
+          <p class="intro_header" style="color: rgb(255, 100, 100);">Student Management System</p>
+          <p class="intro_pera">
+            Welcome to the Student Management System! 🌟 We're here to make things easy and efficient for you. Our goal is simple: collecting and analyzing student data to provide schools and colleges with valuable insights. Rest assured, we prioritize the security of every student's information while offering top-notch data analysis and visualization tools for officials. Let's make education smoother and smarter together! 📊🎓</p>
+          <p class="intro_pera">
+            <pre style="color: rgb(255, 100, 100);">        Developed by : Aakash Jha 
+        </pre></p>
+        </div>
+      </div>
+      <marquee style="color: red;" behavior="" direction=""><pre>Student Management System , Developed by : Aakash Jha 
+      <div class="about_section" id="about">
+        <div class="about_main_section">
+          <div class="about_first_child">
+            <div class="about_pera">
+              <p class="main_about_header">About</p>
+              <!-- <p class="about_header">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p> -->
+              <ul>
+                <li>
+                  <span>>></span> Student Registration : Students can fill their details very easily in the student
+                  Registration section by entering comprehensive data, including personal, academic
+                  , and contact details ,etc                  
+                </li>
+                <li>
+                  <span>>></span>User Authentication : Officials initiate the system by authenticating their
+                  credentials through a secure login process.
+                </li>
+              <li>
+                <span>>></span>After successful authentication, officials can access to the system's dashboard, presenting an overview of available functionalities such as Data Visualization, Data Analysis ,Deletion & Updating of student records ,Teacher Registration,etc .                    
+              </li>
+                {% comment %} <li>
+                  <span>>></span>Search Functionality : Officials can efficiently search for specific student records
+                  using various criteria such as student ID, Student name, section ,attendance ,gender,aadhar number, marks ,fees ,etc
+                </li> {% endcomment %}
+                <li><span>>></span>Data Visualization : The system offers data visualization features powered by
+                  Matplotlib, enabling officials to interpret student metrics through dynamic charts. </li>
+                <li>
+                  <li><span>>></span>Data Encryption and Security Measures : Advanced encryption techniques are
+                    applied to secure 
+                    passwords and confidentiality.
+                    </li>
+                    <li><span>>></span>The Attendance Recording Feature allows teachers to efficiently record and manage daily attendance for students. </li>
+                  <li><span>>></span>Logout : User can securely log out of the system, terminating their session
+                    and contributing to overall system security.</li>
+                  {% comment %} <li><span>>></span>Future Adaptability : The system is designed with a modern technology stack to
+                    facilitate future adaptability and scalability in response to evolving educational needs.
+                    </li>
+                    <li>                  
+                  <span>>></span>This will help in boosting the literacy rate of India.</li>
+                  <li><span>>></span>Feedback : Feedback is actively sought, and iterative improvements are made to
+                    the system based on user input and identified areas for enhancement.</li>
+                </li> {% endcomment %}
+              </ul>
+              {% comment %} <a href="" class="about_btn">Read more</a> {% endcomment %}
+            </div>
+          </div>
+          <div class="about_second_child">
+            <img src="/static/img/about.jpeg" alt="about image" />
+          </div>
+        </div>
+      </div>
+      <div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.871407916191!2d77.44511047464906!3d28.633615884033055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cee3d4e3485ed%3A0xe0fe1689b57c7d2e!2sABESIT%20GROUP%20OF%20INSTITUTIONS!5e0!3m2!1sen!2sin!4v1702384102298!5m2!1sen!2sin" width="80%" height="500px" style="border:1; margin-left: 5%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+        
+      <!-- experience secction -->
+      <div class="experience_section">
+        <div class="experience_main_section" style="background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url('{% static "img/intro3.jpg" %}');">
+          <div class="box">
+            <p class="num_collages" id="number1">
+              0 <span>k</span>
+            </p>
+            <h2 class="collage_header"><span>Schools</span></h2>
+          </div>
+          <div class="box">
+            <p class="num_helps" id="number2">
+              <span>29k+</span>
+            </p>
+            <h2 class="help_header"><span>Helps</span></h2>
+          </div>
+          <div class="box">
+            <p class="num_reviews" id="number3">
+              <span>459k+</span>
+            </p>
+            <h2 class="reviews_header"><span>Reviews</span></h2>
+          </div>
+          <div class="box">
+            <p class="num_std_res" id="number4">
+              <span>455k+</span>
+            </p>
+            <h2 class="header_std_res"><span>Student Registration</span></h2>
+          </div>
+        </div>
+      </div>
+
+      <p class="reviews_headers">Reviews Section</p>
+      <div class="cards_container flex">
+          <div class="reviews_section">
+            <div class="reviews_main_section">
+              <div class="img">
+                <img src="/static/img/client-2.jpeg" alt="" />
+              </div>
+              <p class="pera_reviews">Navigating through the Student Management System website was a breeze; the intuitive design made it effortless to access and update student information.</p>
+              <p class="reviews_name">name abc</p>
+              <!-- <p class="happy_reviews">Happy Offer</p> -->
+              <p class="reviews_star">
+                5 <span class="start_span">★★★★★</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="reviews_section flex">
+            <div class="reviews_main_section">
+              <div class="img">
+                <img src="/static/img/client-1.jpg" alt="client1" />
+              </div>
+              <p class="pera_reviews">I appreciate the seamless experience on the Student Management System platform; the user-friendly interface and quick response times enhance the efficiency of managing student data.</p>
+              <p class="reviews_name">name pqr</p>
+              <p class="reviews_star">
+                4 <span class="start_span">★★★★☆</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="reviews_section flex">
+            <div class="reviews_main_section">
+              <div class="img">
+                <img src="static/img/testimonial-3.jpg" alt="" />
+              </div>
+              <p class="pera_reviews">The Student Management System website offers a delightful user experience with its clear layout and easy-to-use features, streamlining tasks related to student details and data analysis.</p>
+              <p class="reviews_name">name xyz</p>
+              <!-- <p class="happy_reviews">Happy Offer</p> -->
+              <p class="reviews_star">
+                4.5 <span class="start_span">★★★☆</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+    <div class="footer_section">
+            <div class="footer_main_section">
+                <div class="footer_service_list">
+                    <p class="footer_service_header"><span>Our Features</span></p>
+                    <p class="footer_pera_list">User Authentication</p>
+                    <p class="footer_pera_list">New Record Creation</p>
+                    <p class="footer_pera_list"> OTP-Email Security & Authentication </p>
+                    <p class="footer_pera_list">Automated Timestamping</p>
+                    <p class="footer_pera_list">Data Encryption</p>
+                    <p class="footer_pera_list">Data Visualization</p>
+                    <p class="footer_pera_list">Search and Retrieval</p>
+                    <p class="footer_pera_list">Data Transfer through Email</p>
+                    <p class="footer_pera_list">Record Update and Deletion</p>
+                    <p class="footer_pera_list">Daily Attendance Recording</p>
+                    <p class="footer_pera_list">Secure Logout</p>
+                </div>
+                <div class="work_addresh_list">
+                    <p class="work_addresh_header"><span>Work Address</span></p>
+                    <p class="work_first_addresh"><span><i class="ri-map-pin-2-line"></i></span> ABESIT Campus Rd, near Crossing Republik, NE-3, Crossings Republik, Ghaziabad, Uttar Pradesh 201009</p>
+                    <p class="work_second_addresh"><span><i class="ri-map-pin-2-line"></i></span> Vistar Yojna, AKTU CDRI Rd, Naya Khera, Jankipuram, Lucknow, Uttar Pradesh 226031</p>
+                </div>
+                <div  class="quick_link_list">
+                    <p id="quick_links" class="quick_link_header"><span>Quick Links</span></p>
+                    <a class="quick_pera_list" href="">Home</a> <br>
+                    <a class="quick_pera_list" href="#about">About</a> <br>
+                    <a class="quick_pera_list" href="{% url 'officials' %}">Services</a><br>
+                    <a class="quick_pera_list" href="{% url 'contact' %}">Developers</a><br>
+                    <a class="quick_pera_list" href="{% url 'ST_login' %}">Student Teacher Login</a> <br>
+                    <a class="quick_pera_list" href="{% url 'form' %}">Student Registration</a><br>
+                </div>
+                <div class="footer_contact_list">
+                    <p class="contact_footer_header"><span>Contact Us</span></p>
+                    {% comment %} <p class="contact_footer_pera"><span><i class="ri-phone-fill"></i></span> +91 844 858 3370</p> {% endcomment %}
+                    <p class="contact_footer_pera"><span><i class="ri-phone-fill"></i></span> +91 8130586062</p>
+                    <p class="contact_footer_pera"><span><i class="ri-phone-fill"></i></span> +91 8791993268</p>
+                    <p class="contact_footer_pera"><span><i class="ri-phone-fill"></i></span> +91 7351754001</p>
+                    {% comment %} <p class="contact_footer_pera"><span><i class="ri-mail-fill"></i></span> info@abesit.in</p> {% endcomment %}
+                    <div class="footer_perents_logo">
+                        <div class="footer_first_child_logo flex"> <i class="ri-whatsapp-line"></i> </div>
+                        <div class="footer_second_child_logo flex"> <i class="ri-instagram-line"></i> </div>
+                        <div class="footer_third_child_logo flex"> <i class="ri-facebook-line"></i> </div>
+                        <div class="footer_forth_child_logo flex"> <i class="ri-twitter-line"></i> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer_line"></div>
+            <p class="footer_bottom">&copy; All rights reserved </p>
+        </div>
+
+
+
+    </div>
+
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
+
+    <script src="{% static 'script.js' %}"></script>
+  </body>
+</html>

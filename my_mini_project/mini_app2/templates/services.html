@@ -1,0 +1,149 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(0.1deg, #3498db, #8e44ad);
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2em;
+            text-align: center;
+            max-width: 800px;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            cursor: pointer;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 10px;
+            transition: transform 0.3s, background-color 0.3s;
+            max-width: 300px;
+            /* This line defines the maximum width of the card */
+
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            background-color: #2c3e50;
+        }
+
+        .saffron {
+            background-color: #FF671F;
+            width: 180px;
+        }
+
+        .white {
+            background-color: #fff;
+            color: #06038D;
+            width: 180px;
+            /* This line defines the maximum width of the card */
+            text-align: center;
+        }
+
+        .green {
+            background-color: #046A38;
+            width: 180px;
+            height: 200px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+            justify-content: space-between;
+        }
+        button {
+            /* margin-left: 10px; */
+            color: white;
+            text-decoration: none;
+            background-color: crimson;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 15px;
+            margin-right: 30px;
+        }
+
+        .add_teacher {
+            color: white;
+            background: linear-gradient(0.1deg, blue);
+            background-color: #2ecc71; /*royalblue 2ecc71 673ab7 f1c40f */
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 10px;
+            margin-left: 10x;
+        }
+
+        
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🎉 Welcome Officials, to the Student Management System 🚀</h1>
+    <p>Get ready for a journey where innovation meets education! Explore user-friendly tools, dynamic data analysis, and
+        vibrant visualizations designed to elevate your administrative work. Our Project provides top-notch data
+        security and analysis tools. Let's make education smoother and smarter together! 📊🎓 🚀</p>
+
+    <div class="container">
+        <div class="card saffron" onclick="location.href='{% url 'data_visualization' %}'">
+            <h2>Data Visualization</h2>
+        </div>
+        <div class="card white" onclick="location.href='{% url 'search' %}'">
+            <h2 class="ashok-chakra">Search</h2>
+            <h2 class="ashok-chakra">Delete</h2>
+            <h2 class="ashok-chakra">Update</h2>
+        </div>
+        <div class="card green" onclick="location.href='{% url 'data_analysis' %}'">
+            <h2>All Student Data </h2>
+        </div>
+    </div>
+
+    <div class="button-container">
+        <form id="logoutForm" method="post" action="{% url 'services' %}">
+            {% csrf_token %}
+            <button type="submit" name="logout">Logout</button>
+        </form>
+        <a class="add_teacher" href="{% url 'teacher_registration' %}">Add Teacher</a>
+    </div>
+
+
+
+    <footer>
+        Developed by 🌟 Aakash Jha
+    </footer>
+</body>
+
+</html>

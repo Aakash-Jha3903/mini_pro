@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar_offi {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .navbar_offi nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 70px;
+        }
+
+        .navbar_offi ol {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar_offi li {
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar_offi a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            padding: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar_offi a:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar_offi">
+        <nav>
+            <ol>
+                <li><a href="{% url 'data_visualization' %}">Data Visualization</a></li>
+                <li><a href="{% url 'data_analysis' %}">Data Analysis</a></li>
+                <li><a href="{% url 'services' %}">Services</a></li>
+                <li><a href="{% url 'contact' %}">Developers</a></li>
+                <li><a href="{% url 'search' %}">Search Update Delete</a></li>
+            </ol>
+        </nav>
+    </div>
+
+</body>
+
+</html>

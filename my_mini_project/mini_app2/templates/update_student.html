@@ -1,0 +1,120 @@
+<!-- update_student.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Student</title>
+    <link rel="stylesheet" href="/static/update_student.css" />
+</head>
+
+<body>
+    {% include "base.html" %}
+
+    <h1>Update Student Details</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <!-- Include the fields you want to update -->
+        <div>
+            <label for="student_id">Student ID:</label>
+            <input type="text" name="student_id" value="{{ student.student_id }}" />
+        </div>
+        <div>
+            <label for="student_name">Student Name: <span>*</span></label>
+            <input type="text" id="student_name" name="student_name" value="{{ student.student_name }}" required>
+        </div>
+        <div class="input-container">
+            <label for="student_aadhar">Student Aadhar Number: <span>*</span> </label>
+            <input type="text" id="student_aadhar" name="student_aadhar" value="{{ student.student_aadhar }}" required>
+        </div>
+        <div class="input-container">
+            <label for="student_phone">Student Phone Number: <span>*</span> </label>
+            <input type="text" id="student_phone" name="student_phone" value="{{ student.student_phone }}" required>
+        </div>
+        <div class="input-container">
+            <label for="student_email">Student student_email:</label>
+            <input type="email" id="student_email" name="student_email" value="{{ student.student_email }}" required>
+        </div>
+        
+        <!-- <div class="input-container">
+            <label for="age">Student's Age: <span>*</span> </label>
+            <input type="text" id="age" name="age" value="{{ student.age }}" required>
+        </div> -->
+
+        <div class="input-container">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+        <div class="input-container">
+            <label for="student_dob">Date of Birth:</label>
+            <input type="date" id="student_dob" name="student_dob" value="{{ student.student_dob }}" required>
+        </div>
+        <div class="input-container">
+            <label for="student_address">Student's Address:</label>
+            <input type="text" id="student_address" name="student_address" value="{{ student.student_address }}"
+                required>
+        </div>
+
+        <div class="input-container">
+            <label for="father_name">Father's Name: <span>*</span> </label>
+            <input type="text" id="father_name" name="father_name" value="{{ student.father_name }}" required>
+        </div>
+        <div class="input-container">
+            <label for="father_phone">Father Phone Number: <span>*</span> </label>
+            <input type="text" id="father_phone" name="father_phone" value="{{ student.father_phone }}" required>
+        </div>
+        <div class="input-container">
+            <label for="mother_name">Mother's Name: <span>*</span> </label>
+            <input type="text" id="mother_name" name="mother_name" value="{{ student.mother_name }}" required>
+        </div>
+        <div class="input-container">
+            <label for="mother_phone">Mother Phone Number: <span>*</span> </label>
+            <input type="text" id="mother_phone" name="mother_phone" value="{{ student.mother_phone }}" required>
+        </div>
+
+
+        <div class="input-container">
+            <label for="school_name">School Name: <span>*</span> </label>
+            <input type="text" id="school_name" name="school_name" value="{{ student.school_name }}" required>
+        </div>
+        <div class="input-container">
+            <label for="section">Student's section: <span>*</span> </label>
+            <input type="text" id="section" name="section" value="{{ student.section }}" required>
+        </div>
+
+        <div class="input-container">
+            <label for="attendance">Attendance:</label>
+            <input type="number" id="attendance" name="attendance" min="0" max="100" value="{{ student.attendance }}"
+                required>
+        </div>
+        <div class="input-container">
+            <label for="marks">Marks:</label>
+            <input type="number" id="marks" name="marks" min="0" max="100" value="{{ student.marks}}" required>
+        </div>
+        <div class="input-container">
+            <label for="fees">Fees Status:</label>
+            <select id="fees" name="fees" required>
+                <option value="Paid">Paid</option>
+                <option value="Unpaid">Unpaid</option>
+            </select>
+        </div>
+        <div class="input-container">
+            <label for="state_name">State Name: <span>*</span> </label>
+            <input type="text" id="state_name" name="state_name" value="{{ student.state_name }}" required>
+        </div>
+        <div class="input-container">
+            <label for="city_name">City Name:</label>
+            <input type="text" id="city_name" name="city_name" value="{{ student.city_name}}" required>
+        </div>
+
+        <!-- ... (include other fields) ... -->
+
+        <button type="submit">Save Changes</button>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,217 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .details {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="details">
+        <h2>Student Details</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Student ID</th>
+                    <th>Student Name</th>
+                    <th>Student Aadhar</th>
+                    <th>Student Phone</th>
+                    <th>Student Email</th>
+                    <th>Gender</th>
+                    <th>DOB</th>
+                    <th>Address</th>
+                    <th>Father Name</th>
+                    <th>Father Phone</th>
+                    <th>Mother Name</th>
+                    <th>Mother Phone</th>
+                    <th>School Name</th>
+                    <th>Section</th>
+                    <th>State Name</th>
+                    <th>City Name</th>
+                    <th>Attendence</th>
+                    <th>Marks</th>
+                    <th>Fees Paid</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ student.id }}</td>
+                    <td>{{ student.student_id }}</td>
+                    <td>{{ student.student_name }}</td>
+                    <td>{{ student.student_aadhar }}</td>
+                    <td>{{ student.student_phone }}</td>
+                    <td>{{ student.student_email }}</td>
+                    <td>{{ student.gender }}</td>
+                    <td>{{ student.student_dob }}</td>
+                    <td>{{ student.student_address }}</td>
+                    <td>{{ student.father_name }}</td>
+                    <td>{{ student.father_phone }}</td>
+                    <td>{{ student.mother_name }}</td>
+                    <td>{{ student.mother_phone }}</td>
+                    <td>{{ student.school_name }}</td>
+                    <td>{{ student.section }}</td>
+                    <td>{{ student.state_name }}</td>
+                    <td>{{ student.city_name }}</td>
+                    <td>{{ student.attendance }}</td>
+                    <td>{{ student.marks}}</td>
+                    <td>{{ student.fees }}</td>
+                    <td>{{ student.created_at }}</td>
+                    <td>{{ student.updated_at }}</td>
+                </tr>
+            </tbody>
+        </table>
+    
+    </div>
+</body>
+</html> {% endcomment %}
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artistic Student Details</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .details {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            text-align: center;
+            overflow-x: auto;
+        }
+
+        h2 {
+            color: #2c3e50;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="details">
+        <h2>📚 Student Details</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Student ID</th>
+                    <th>Student Name</th>
+                    <th>Student Aadhar</th>
+                    <th>Student Phone</th>
+                    <th>Student Email</th>
+                    <th>Gender</th>
+                    <th>DOB</th>
+                    <th>Address</th>
+                    <th>Father Name</th>
+                    <th>Father Phone</th>
+                    <th>Mother Name</th>
+                    <th>Mother Phone</th>
+                    <th>School Name</th>
+                    <th>Section</th>
+                    <th>State Name</th>
+                    <th>City Name</th>
+                    <th>Attendence</th>
+                    <th>Marks</th>
+                    <th>Fees Paid</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ student.id }}</td>
+                    <td>{{ student.student_id }}</td>
+                    <td>{{ student.student_name }}</td>
+                    <td>{{ student.student_aadhar }}</td>
+                    <td>{{ student.student_phone }}</td>
+                    <td>{{ student.student_email }}</td>
+                    <td>{{ student.gender }}</td>
+                    <td>{{ student.student_dob }}</td>
+                    <td>{{ student.student_address }}</td>
+                    <td>{{ student.father_name }}</td>
+                    <td>{{ student.father_phone }}</td>
+                    <td>{{ student.mother_name }}</td>
+                    <td>{{ student.mother_phone }}</td>
+                    <td>{{ student.school_name }}</td>
+                    <td>{{ student.section }}</td>
+                    <td>{{ student.state_name }}</td>
+                    <td>{{ student.city_name }}</td>
+                    <td>{{ student.attendance }}</td>
+                    <td>{{ student.marks}}</td>
+                    <td>{{ student.fees }}</td>
+                    <td>{{ student.created_at }}</td>
+                    <td>{{ student.updated_at }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

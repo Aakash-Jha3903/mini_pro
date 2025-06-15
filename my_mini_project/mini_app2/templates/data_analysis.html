@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analysis</title>
+    <style>
+        .excel button {
+            color: white;
+            margin-left: 50px;
+            background: linear-gradient(30deg, blue, red);
+            padding: 15px 30px 15px 30px;
+        }
+
+        .share_data {
+            display: flex;
+        }
+
+        /* .email_form input,label { */
+        .email {
+            margin-right: 50px;
+            margin-left: 40%;
+        }
+
+        .email_button {
+            margin-top: 10px;
+            padding: 10px 20px 10px 20px;
+            background: linear-gradient(30deg, blue, red);
+            color: white;
+        }
+
+        .gmail_msg,
+        .excel_down_msg {
+            color: cornflowerblue;
+        }
+    </style>
+</head>
+
+<body>
+    {% include "base.html" %}
+    <h1>All Student Data </h1>
+
+    <div class="share_data">
+        <!-- Add Excel Export Form -->
+        <div class="excel">
+            <form method="post" action="{% url 'export_excel' %}">
+                {% csrf_token %}
+                <!-- <input type="hidden" name="excel_download" required /> -->
+                <button type="submit" name="excel_download">Download Excel File</button>
+            </form> <br>
+        </div>
+        <div class="email">
+            <form class="email_form" method="post" action="{% url 'export_excel' %}">
+                {% csrf_token %}
+                <label for="user_email">Get the below data in Excel to your Email</label> <br>
+                <input type="email" name="user_email" placeholder="Enter your email here" required />
+                <button class="email_button" type="submit">Get on email</button>
+            </form> <br>
+            <div class="gmail_msg">
+                {% if messages %}
+                {% for message in messages %}
+                <div>{{ message }}</div>
+                {% endfor %}
+                {% endif %}
+            </div><br>
+            <div class="excel_down_msg">
+                {% if excel_down %}
+                {{ excel_down }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <h1>Student's data <h2> ({{ students | length }} Records)</h2>
+    </h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Student Aadhar</th>
+                <th>Student Phone</th>
+                <th>Student Email</th>
+                {% comment %} <th>Age</th> {% endcomment %}
+                <th>Gender</th>
+                <th>DOB</th>
+                <th>Address</th>
+                <th>Father Name</th>
+                <th>Father Phone</th>
+                <th>Mother Name</th>
+                <th>Mother Phone</th>
+                <th>School Name</th>
+                <th>Section</th>
+                <th>State Name</th>
+                <th>City Name</th>
+                <th>Attendence</th>
+                <th>Marks</th>
+                <th>Fees Paid</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.id }}</td>
+                <td>{{ student.student_id }}</td>
+                <td>{{ student.student_name }}</td>
+                <td>{{ student.student_aadhar }}</td>
+                <td>{{ student.student_phone }}</td>
+                <td>{{ student.student_email }}</td>
+                {% comment %} <td>{{ student.age }}</td> {% endcomment %}
+                <td>{{ student.gender }}</td>
+                <td>{{ student.student_dob }}</td>
+                <td>{{ student.student_address }}</td>
+                <td>{{ student.father_name }}</td>
+                <td>{{ student.father_phone }}</td>
+                <td>{{ student.mother_name }}</td>
+                <td>{{ student.mother_phone }}</td>
+                <td>{{ student.school_name }}</td>
+                <td>{{ student.section }}</td>
+                <td>{{ student.state_name }}</td>
+                <td>{{ student.city_name }}</td>
+                <td>{{ student.attendance }}</td>
+                <td>{{ student.marks}}</td>
+                <td>{{ student.fees }}</td>
+                <td>{{ student.created_at }}</td>
+                <td>{{ student.updated_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+
+</html>

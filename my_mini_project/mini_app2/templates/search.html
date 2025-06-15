@@ -1,0 +1,226 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Student</title>
+    <link rel="stylesheet" href="{% static 'search.css' %}" />
+  </head>
+  
+  <body>
+    {% include "base.html" %}
+    
+    <h1>Student Search</h1>
+    <form style="margin: 20px auto; background: linear-gradient(0deg, #3498db, #8e44ad);" method="POST" action="{% url 'search' %}">
+      {% csrf_token %}
+
+      <div style="display: flex; gap: 240px;">
+        <label for="student_id">Student ID:</label>
+        <label for="student_aadhar">Student Aadhar:</label>
+      </div>
+      <div style="display: flex; gap: 10px;">
+        <input type="text" name="student_id" value="{{ request.POST.student_id }}" />
+        <input type="text" name="student_aadhar" value="{{ request.POST.student_aadhar }}" />
+      </div>
+
+      <label for="student_name">Student Name:</label>
+      <input type="text" name="student_name" value="{{ request.POST.student_name }}" />
+
+      <label for="student_phone">Phone:</label>
+      <input type="text" name="student_phone" value="{{ request.POST.student_phone }}" />
+
+      <label for="gender">Gender:</label>
+      <select name="gender">
+        <option value="">-- Select Gender --</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+
+      <label for="section">Section:</label>
+      <input type="text" name="section" value="{{ request.POST.section }}" />
+
+      <label for="attendance">Attendance (Range):</label>
+      <div style="display: flex; gap: 10px;">
+        <input type="number" name="attendance_from" min="0" max="100" placeholder="From" value="{{ request.POST.attendance_from }}" />
+        <input type="number" name="attendance_to" min="0" max="100" placeholder="To" value="{{ request.POST.attendance_to }}" />
+      </div>
+
+      <label for="marks">Marks (Range):</label>
+      <div style="display: flex; gap: 10px;">
+        <input type="number" name="marks_from" min="0" max="100" placeholder="From" value="{{ request.POST.marks_from }}" />
+        <input type="number" name="marks_to" min="0" max="100" placeholder="To" value="{{ request.POST.marks_to }}" />
+      </div>
+
+      <label for="fees">Fees:</label>
+      <select name="fees">
+        <option value="">-- Select Fees --</option>
+        <option value="Paid">Paid</option>
+        <option value="Unpaid">Unpaid</option>
+      </select>
+      {% comment %} <button typae="submit">Search</button> {% endcomment %}
+      <button name="search" type="submit">Search</button>
+    </form>
+    <div class="share_data">
+      <!-- Add Excel Export Form -->
+      <div class="excel">
+        <form method="post" action="{% url 'download_csv' %}">
+            {% csrf_token %}
+            <!-- Include the search form fields in the POST request -->
+            <input type="hidden" name="student_id" value="{{ request.POST.student_id }}">
+            <input type="hidden" name="student_aadhar" value="{{ request.POST.student_aadhar }}">
+            <input type="hidden" name="student_name" value="{{ request.POST.student_name }}">
+            <input type="hidden" name="student_phone" value="{{ request.POST.student_phone }}">
+            <input type="hidden" name="gender" value="{{ request.POST.gender }}">
+            <input type="hidden" name="section" value="{{ request.POST.section }}">
+            <input type="hidden" name="attendance_from" value="{{ request.POST.attendance_from }}">
+            <input type="hidden" name="attendance_to" value="{{ request.POST.attendance_to }}">
+            <input type="hidden" name="marks_from" value="{{ request.POST.marks_from }}">
+            <input type="hidden" name="marks_to" value="{{ request.POST.marks_to }}">
+            <input type="hidden" name="fees" value="{{ request.POST.fees }}">
+    
+            <button type="submit" name="excel_download">Download Excel File</button>
+        </form> <br>
+    </div>
+    
+        <div class="email">
+          <form class="email_form" method="post" action="{% url 'email_download_csv' %}">
+            {% csrf_token %}
+
+          <input type="hidden" name="student_id" value="{{ request.POST.student_id }}">
+            <input type="hidden" name="student_aadhar" value="{{ request.POST.student_aadhar }}">
+            <input type="hidden" name="student_name" value="{{ request.POST.student_name }}">
+            <input type="hidden" name="student_phone" value="{{ request.POST.student_phone }}">
+            <input type="hidden" name="gender" value="{{ request.POST.gender }}">
+            <input type="hidden" name="section" value="{{ request.POST.section }}">
+            <input type="hidden" name="attendance_from" value="{{ request.POST.attendance_from }}">
+            <input type="hidden" name="attendance_to" value="{{ request.POST.attendance_to }}">
+            <input type="hidden" name="marks_from" value="{{ request.POST.marks_from }}">
+            <input type="hidden" name="marks_to" value="{{ request.POST.marks_to }}">
+            <input type="hidden" name="fees" value="{{ request.POST.fees }}">
+            
+            <input type="email" name="user_email" placeholder="Enter your email here" required />
+          <button class="email_button" type="submit" >Get on email</button>
+        </form>
+           <br>
+          <div style="color:green" class="gmail_msg">
+              {% if messages %}
+              {% for message in messages %}
+              <div>{{ message }}</div>
+              {% endfor %}
+              {% endif %}
+          </div><br>
+          <div class="excel_down_msg">
+              {% if excel_down %}
+              {{ excel_down }}
+              {% endif %}
+          </div>
+      </div>
+  </div>
+
+      
+    
+    <!-- Separate form for Delete All -->
+    <form id="delete-all-form" style="margin: 20px auto;" method="POST" action="{% url 'delete_selected' %}">
+      {% csrf_token %}
+      <pre style="display: inline-block;">To delete all records of all students </pre>
+  
+    <button type="submit" name="delete_action" value="delete_all" onclick="return confirm('Are you sure you want to delete all records of students ?')"
+    style="background:red">Delete All</button>
+
+      {% comment %} <button id="delete-all-form" type="submit" name="delete_action" value="delete_all" onclick="startDeleteTimer()" style="background:red">Delete All</button> {% endcomment %}
+    </form>
+
+    {% comment %} 
+      <div id="delete-timer-container" style="display: none;">
+        <p id="delete-timer"></p>
+        <p>seconds remaining. You can cancel the deletion.</p>
+        <button id="cancel-delete-btn" onclick="cancelDeletion()">Cancel Deletion</button>
+      </div> 
+    {% endcomment %}
+
+    <div>
+      {% if results %}
+        <form style="background: #2c3e50; max-width: 200%;" method="POST" action="{% url 'delete_selected' %}">
+          {% csrf_token %}
+          <p>Total results found: {{ results|length }}</p>
+          <button type="submit" name="delete_action" value="delete_selected" onclick="return confirm('Are you sure you want to delete the selected students?')">Delete Selected</button>
+          <table border="1">
+            <thead>
+              <tr>
+                <th>Select</th>
+
+                <th>ID</th>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Student Aadhar</th>
+                <th>Student Phone</th>
+                <th>Student Email</th>
+                {% comment %} <th>Age</th> {% endcomment %}
+                <th>Gender</th>
+                <th>DOB</th>
+                <th>Address</th>
+                <th>Father Name</th>
+                <th>Father Phone</th>
+                <th>Mother Name</th>
+                <th>Mother Phone</th>
+                <th>School Name</th>
+                <th>Section</th>
+                <th>State Name</th>
+                <th>City Name</th>
+                <th>Attendence</th>
+                <th>Marks</th>
+                <th>Fees Paid</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+                <th>Update Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% comment %} <button type="submit" name="delete_action" value="delete_selected" onclick="return confirm('Are you sure you want to delete the selected students?')">Delete Selected</button>
+              {% endcomment %}
+              {% for i in results %}
+                <tr>
+                  <td>
+                    <input type="checkbox" name="selected_students" value="{{ i.id }}" />
+                  </td>
+                  <td>{{ i.id }}</td>
+                  <td>{{ i.student_id }}</td>
+                  <td>{{ i.student_name }}</td>
+                  <td>{{ i.student_aadhar }}</td>
+                  <td>{{ i.student_phone }}</td>
+                  <td>{{ i.student_email }}</td>
+                  {% comment %} <td>{{ i.age }}</td> {% endcomment %}
+                  <td>{{ i.gender }}</td>
+                  <td>{{ i.student_dob }}</td>
+                  <td>{{ i.student_address }}</td>
+                  <td>{{ i.father_name }}</td>
+                  <td>{{ i.father_phone }}</td>
+                  <td>{{ i.mother_name }}</td>
+                  <td>{{ i.mother_phone }}</td>
+                  <td>{{ i.school_name }}</td>
+                  <td>{{ i.section }}</td>
+                  <td>{{ i.state_name }}</td>
+                  <td>{{ i.city_name }}</td>
+                  <td>{{ i.attendance }}</td>
+                  <td>{{ i.marks }}</td>
+                  <td>{{ i.fees }}</td>
+                  <td>{{ i.created_at }}</td>
+                  <td>{{ i.updated_at }}</td>
+                  <td>
+                    <a href="{% url 'update_student' i.id %}">Update</a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <button type="submit" name="delete_action" value="delete_selected" onclick="return confirm('Are you sure you want to delete the selected students?')">Delete Selected</button>
+        </form>
+        
+      {% else %}
+        <pre>No result found.......</pre>
+      {% endif %}
+      <br /><br />
+    </div>
+  </body>
+</html>

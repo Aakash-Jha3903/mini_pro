@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Teacher Dashboard</title>
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        margin: 20px;
+        background-color: #f4f4f4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+      
+      .dashboard {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        width: 80%;
+        text-align: center;
+        overflow-x: auto;
+      }
+      
+      h2 {
+        color: #2c3e50;
+      }
+      
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      
+      th,
+      td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: center;
+      }
+      
+      th {
+        background-color: #3498db;
+        color: #fff;
+      }
+      
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      
+      form {
+        margin-top: 20px;
+      }
+      
+      button {
+        background-color: #27ae60;
+        color: white;
+        padding: 14px 28px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+      }
+      
+      button:hover {
+        background-color: #219653;
+      }
+      
+      input[type='checkbox'] {
+        transform: scale(1.5);
+        margin-right: 5px;
+      }
+      
+      span {
+        font-size: 100px;
+      }
+      #A {
+        margin-left: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dashboard">
+      <h2 style="margin-bottom: 0px; margin-top: 0px;"><span>👩‍🏫</span> Teacher Dashboard - Section: {{ section }} ({{ students_data|length }} Students)</h2>
+      <h2 style="margin-top: 0px;">({{ current_date }})</h2>
+      <form method="post">
+        {% csrf_token %}
+        <table>
+          <thead>
+            <tr>
+              <th>Student ID</th>
+              <th>Student Name</th>
+              <th>Attendance</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for student in students_data %}
+              <tr>
+                <td>{{ student.student_id }}</td>
+                <td>{{ student.student_name }}</td>
+                <td>
+                  <input type="radio" name="student_{{ student.id }}" value="P" />P
+                  <input type="radio" name="student_{{ student.id }}" value="A" checked />A 
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <button type="submit">Submit Attendance</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+{% load static %}
+
+<!-- data_analysis.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Visualization</title>
+    <style>
+      form {
+        background: linear-gradient(0.1deg, #3498db, #8e44ad);
+        padding: 40px;
+      }
+      .msg{
+        color:cornflowerblue;
+      }
+    </style>
+  </head>
+
+  <body>
+    {% include "base.html" %}
+
+    <h1>Data Visualization</h1>
+    
+    <div class="msg">
+      {% if email_sent %}
+        {{ email_sent }}
+      {% else %}
+        {{ email_not_sent }}
+      {% endif %}
+    </div>
+
+    <form method="post" action="{% url 'data_visualization' %}">
+      {% csrf_token %}
+      <label for="user_email">Enter your email:</label>
+      <input type="email" name="user_email" required /> <br /> <br />
+      <button type="submit">Get the Data Visualization to your Email</button>
+      {% comment %} <button type="submit">Get the Data Visualization and Tabular data to your Email</button> {% endcomment %}
+      <br /> <br /> <br /> <br />
+      <!-- Displaying the saved plot -->
+      <img src="{% static 'img/plot.png' %}" alt="Data Analysis Plot" />
+      <br> <br>
+    </form> 
+  </body>
+</html>

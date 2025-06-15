@@ -1,0 +1,77 @@
+# copied by pytest folder.
+vir_mini/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+db.sqlite3
+db.sqlite3-journal
+
+# Media / Static files (optional, depending on deployment setup)
+staticfiles_build/
+
+# Virtual environments
+vir_mini/
+venv/
+env/
+vir_env/
+vir_mini/
+*.venv
+*.env
+
+**/env/
+**/venv/
+**/vir_env/
+**/vir_*/
+**/.venv/
+**/.env/
+
+# Generic pattern to ignore any virtual environment folder
+**/bin/
+**/Include/
+**/Lib/
+**/pyvenv.cfg
+**/pyvenv.cfg
+
+
+# VS Code settings
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+*.env
+
+# Testing
+.coverage
+.tox/
+.pytest_cache/
+
+# Migrations (optional: uncomment if you want to ignore generated migration files)
+# **/migrations/*.py
+# **/migrations/*.pyc
+
+# Deployment files
+build/
+build_files.sh
+
+# Node/Vercel 
+node_modules/
+.vercel/
+vercel.json
+
+# Ignore compiled files
+*.exe
+
+delpro/
+.github/
+
